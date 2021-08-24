@@ -17,7 +17,7 @@ export class weatherApi {
         const apiResult = await this.createCall(`${this.BASE_URL}&q=${cityName}`);
     }
 
-    public async getCurrentWeatherByCoordinates(lat: string, lon: string) {
+    public async getCurrentWeatherByCoordinates (lat: string, lon: string) {
         const apiResult = await this.createCall(`${this.BASE_URL}&lat=${lat}&lon=${lon}}`);
     }
 }
