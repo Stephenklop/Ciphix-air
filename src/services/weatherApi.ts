@@ -1,11 +1,11 @@
-const fetch = require("node-fetch");
+import fetch from 'node-fetch';
 
 export class weatherApi {
     // Option for personal weather unit measurement
-    private UNITS_OF_MEASUREMENT: String = '';
+    private UNITS_OF_MEASUREMENT: string = '';
 
     // Api url where the calls are send to
-    private BASE_URL: String = '';
+    private BASE_URL: string = '';
 
     constructor() {
         this.UNITS_OF_MEASUREMENT = 'metric';
@@ -25,7 +25,6 @@ export class weatherApi {
     // Get weather by city name with given cityName parameter.
     public getCurrentWeatherByCityName(cityName: string) {
         return new Promise<any>((resolve, reject) => {
-            console.log(`${this.BASE_URL}&q=${cityName}`);
             this.createCall(`${this.BASE_URL}&q=${cityName}`)
             .then(res => resolve(res))
             .catch(err => reject(err));

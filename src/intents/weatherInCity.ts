@@ -5,6 +5,8 @@ export const weatherInCity = async (conv: any) => {
     // Get data from parameters
     const city = conv.parameters['geo-city'];
 
+    console.log(conv.parameters);
+
     // Initialize the weather api class
     const api = new weatherApi();
 

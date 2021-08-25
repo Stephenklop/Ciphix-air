@@ -2,6 +2,6 @@
 export const fallback = (conv: any) => {
     
     return conv.add(
-        `Ik heb je helaas niet begrepen.`
+        `I'm sorry. I didn't understand that.`
     )
 }
