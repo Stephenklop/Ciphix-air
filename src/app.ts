@@ -32,7 +32,6 @@ intents.set('Weather With Time And City Intent', weatherWithTimeAndCity)
 
 app.post('/', async (req, res) => {
     const agent: any = new WebhookClient({ request: req, response: res })
-
     await agent.handleRequest(intents)
 })
 

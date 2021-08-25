@@ -22,7 +22,8 @@
     "express-basic-auth": "^1.2.0",
     "google-auth-library": "^6.0.5",
     "moment": "^2.26.0",
-    "ngrok": "^3.3.0"
+    "ngrok": "^3.3.0",
+    "node-fetch": "^2.6.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
