@@ -6,10 +6,13 @@ export class weatherApi {
 
     // Api url where the calls are send to
     private BASE_URL: string = '';
+    private FORECAST_URL: string = '';
 
     constructor() {
         this.UNITS_OF_MEASUREMENT = 'metric';
-        this.BASE_URL = `https://api.openweathermap.org/data/2.5/weather?appid=${process.env.WEATHER_API_KEY}&units=${this.UNITS_OF_MEASUREMENT}`
+        this.BASE_URL = `https://api.openweathermap.org/data/2.5/weather?appid=${process.env.WEATHER_API_KEY}&units=${this.UNITS_OF_MEASUREMENT}`;
+        this.FORECAST_URL = `https://api.openweathermap.org/data/2.5/onecall?appid=${process.env.WEATHER_API_KEY}&units=${this.UNITS_OF_MEASUREMENT}`;
+        
     }
 
     // Creates, executes and gives response to and from the api call
@@ -28,11 +31,15 @@ export class weatherApi {
             this.createCall(`${this.BASE_URL}&q=${cityName}`)
             .then(res => resolve(res))
             .catch(err => reject(err));
-        })
+        });
     }
 
     // Get weather by coordinates
-    public async getCurrentWeatherByCoordinates (lat: string, lon: string) {
-        const apiResult = await this.createCall(`${this.BASE_URL}&lat=${lat}&lon=${lon}}`);
+    public getCurrentWeatherForecast (lat: string, lon: string) {
+        return new Promise<any>((resolve, reject) => {
+            this.createCall(`${this.FORECAST_URL}&lat=${lat}&lon=${lon}&exclude='alerts'`)
+            .then(res => resolve(res))
+            .catch(err => reject(err));
+        });
     }
 }
